@@ -12,14 +12,9 @@ api = Api(app)
 def index():
     return mg_python.m_ext_version()
 
-@app.route('/data', methods=['GET'])
+@app.route('/table', methods=['GET'])
 def test():    
-
-    rows = request.args.get('rows')
-    if rows is None:
-        rows = 5
-    
-    json_data = mg_python.m_function(0, f"test^test", rows)
+    json_data = mg_python.m_function(0, "table^API")
     res = make_response(json.loads(json_data), 200)
     return res
 
